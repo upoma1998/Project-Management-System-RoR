@@ -3,17 +3,13 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  scope :main do
-   resources :users do
-    collection do
-
-    end
-   end
-  end
+ 
+  resources :users1
   get '/member_details' => 'members#index'
   
       resources :paid_projects
-      resources :users
+      resources :free_projects
+      #resources :users
     
 
 

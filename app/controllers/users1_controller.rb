@@ -1,5 +1,5 @@
-class UsersController < ApplicationController
-   
+class Users1Controller < ApplicationController
+    
     before_action :add_orga, only: [:show, :destroy, :update]
     def index
         @user=User.all
@@ -15,35 +15,24 @@ class UsersController < ApplicationController
     
     def create
         @user=User.new(email: orga_params[:email],
-            password: orga_params[:password]
-           
+            password: orga_params[:password],
+            role: orga_params[:role]
            
           )
           
         if @user.save
-            render json:@user,status: :created,location:@user
+            render json:"User created successfully"
         else 
             
             render json: @user.errors, status: :unprocessable_entity
         end
     end
     def update
-        user=User.find_by(id: params[:id])
-            if user
-            user.update(
-            email: params[:email],
-            password: params[:password]
-            
-          
-            )
-            render json:"User updated successfully"
-
+        if @user.update(orga_params)
+            render json: @user
             else
-            render json: {
-                error:"User Not Updated"
-            }
+            render json: @user.errors, status: :unprocessable_entity
             end
-
     end
       
     
@@ -59,6 +48,12 @@ class UsersController < ApplicationController
             end
     end
     private
+    def check_admin
+        users=User.last
+        if !users.role=='super_admin'
+            return "You are not allowed to access this part of the site"
+        end
+    end
     def add_orga
         @user=User.find(params[:id])
         #@organization=Organization.find(params[:id])
@@ -67,7 +62,7 @@ class UsersController < ApplicationController
         params.require(:user).permit([
           :email,
           :password,
-          
+          :role
         ])
     end
 

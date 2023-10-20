@@ -4,8 +4,23 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    return unless user.organization?
-    can :manage, :all
+    if user.organization?
+      can :manage, PaidProject
+      can :manage, FreeProject
+    elsif user.super_admin?
+      can :manage, User
+      can :manage, PaidProject
+      can :manage , FreeProject
+    else user.member?
+      can :manage, PaidProject
+      can :manage, FreeProject
+    end
+    
+      
+    
+
+
+
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
