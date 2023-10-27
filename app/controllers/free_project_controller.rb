@@ -27,7 +27,7 @@ class FreeProject < ApplicationRecord
       
         def update
           
-              if @free_project.update(project_params)
+              if @free_project.update(orga_params)
               render json: @free_project
               else
               render json: @free_project.errors, status: :unprocessable_entity

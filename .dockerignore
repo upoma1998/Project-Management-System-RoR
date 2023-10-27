@@ -1,0 +1,28 @@
+#./ .dockerignore
+
+*
+# Dirs to include
+!app
+!bin
+!.circleci
+!config
+!db
+!dinghy
+!frontend
+frontend/node_modules
+!.git
+!lib
+!public
+!test
+!vendor
+# Files to include
+!config.ru
+!Dockerfile
+!entrypoint.sh
+!Gemfile*
+!.gitattributes
+!.gitignore
+!initial_scraping.sh
+!initial_setup.sh
+!Rakefile
+!*.md

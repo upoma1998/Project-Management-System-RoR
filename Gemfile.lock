@@ -138,6 +138,7 @@ GEM
     nokogiri (1.15.4-x64-mingw-ucrt)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.5.4-x64-mingw-ucrt)
     puma (5.6.7)
       nio4r (~> 2.0)
     racc (1.7.1)
@@ -201,7 +202,6 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
-    sqlite3 (1.6.7-x64-mingw-ucrt)
     thor (1.2.2)
     timeout (0.4.0)
     tzinfo (2.0.6)
@@ -231,12 +231,12 @@ DEPENDENCIES
   devise-jwt
   factory_bot_rails
   faker
+  pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.8)
   rails-controller-testing
   rspec-rails
-  sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION
