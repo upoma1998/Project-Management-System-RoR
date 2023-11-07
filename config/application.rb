@@ -26,5 +26,7 @@ module Project
     config.session_store :cookie_store, key: '_interslice_session'
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
+    config.active_job.queue_adapte = :resque
+    #config.active_job.queue_adapter = :sidekiq
   end
 end

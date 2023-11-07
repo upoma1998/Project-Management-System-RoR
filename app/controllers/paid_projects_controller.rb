@@ -1,5 +1,5 @@
 class PaidProjectsController < ApplicationController
-    load_and_authorize_resource param_method: :project_params
+    #load_and_authorize_resource param_method: :project_params
     before_action :add_orga, only: [:show, :destroy, :update]
     
     def index
