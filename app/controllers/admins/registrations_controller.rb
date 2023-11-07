@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# This is admin registration
 
 class Admins::RegistrationsController < Devise::RegistrationsController
   
