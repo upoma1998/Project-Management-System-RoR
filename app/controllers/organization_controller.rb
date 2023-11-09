@@ -2,6 +2,7 @@ class OrganizationController < ApplicationController
     before_action :authenticate_organization!
     before_action :add_free_project, only: [:free_project_show, :free_project_destroy, :free_project_update]
     before_action :add_paid_project, only: [:paid_project_show, :paid_project_destroy, :paid_project_update]
+    before_action :add_task, only: [:task_index, :task_show]
       def free_project_index
         begin
           @free_project=FreeProject.all
@@ -29,8 +30,8 @@ class OrganizationController < ApplicationController
                 else
                     render json: { error: 'Failed to create the project' }, status: :unprocessable_entity
                 end
-              rescue => e
-                render_api_error(e.message, :internal_server_error)
+              #rescue => e
+                #render_api_error(e.message, :internal_server_error)
             end
          
       end
@@ -196,7 +197,22 @@ class OrganizationController < ApplicationController
           
           
         end
-
+        def task_index
+          begin
+            @task=Task.all
+            render json:@task
+          rescue => e
+              render_api_error(e.message, :internal_server_error)
+          end
+        end
+        def task_show
+          begin
+            render json:@task
+          rescue => e
+              render_api_error(e.message, :internal_server_error)
+          end
+        
+        end
       
       
       private 
@@ -241,6 +257,23 @@ class OrganizationController < ApplicationController
                   
                 ])
     end
+    def add_task
+      @task=Task.find(params[:id])
+     
+     
+  end
+  def task_params
+      params.require(:member).permit([
+          :assigned_task,
+          :total_time,
+          :completed_task,
+          :incomplete_task,
+          :time_needed,
+          :dependency_on_member_name,
+          :status
+        
+      ])
+  end
       
   
 

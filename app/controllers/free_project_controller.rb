@@ -21,21 +21,18 @@ class FreeProject < ApplicationRecord
       
       def free_project_create
         begin
-          @free_project=FreeProject.new(
-              
-              free_project_params.merge(organization:@organization) 
-            )
-            
-          if @free_project.save
-              render json:@free_project,status: :created,location:@free_project
-          else 
-              
-              render json: @free_project.errors, status: :unprocessable_entity
+          free_project = current_user.free_projects.create(free_project_params)
+          
+          if free_project.save
+            render json: { message: 'Project created successfully' }, status: :ok
+          else
+            render json: { message: 'Failed to create project successfully' }, status: :ok
           end
         rescue => e
-            render_api_error(e.message, :internal_server_error)
-            
+          render_api_error(e.message, :internal_server_error)
         end
+        
+        
       end
       
         def free_project_update

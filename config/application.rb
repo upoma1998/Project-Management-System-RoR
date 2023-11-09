@@ -28,5 +28,6 @@ module Project
     config.middleware.use config.session_store, config.session_options
     config.active_job.queue_adapte = :resque
     #config.active_job.queue_adapter = :sidekiq
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
