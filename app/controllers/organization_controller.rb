@@ -30,8 +30,8 @@ class OrganizationController < ApplicationController
                 else
                     render json: { error: 'Failed to create the project' }, status: :unprocessable_entity
                 end
-              #rescue => e
-                #render_api_error(e.message, :internal_server_error)
+              rescue => e
+                render_api_error(e.message, :internal_server_error)
             end
          
       end
@@ -87,21 +87,17 @@ class OrganizationController < ApplicationController
       end
           
       def paid_project_create
-            begin
-              @paid_project=PaidProject.new(
-                  
-                  paid_project_params.merge(organization:@organization) 
-                )
-                
-              if @paid_project.save
-                  render json:@paid_project,status: :created,location:@paid_project
-              else 
-                  
-                  render json: @paid_project.errors, status: :unprocessable_entity
-              end
-            rescue => e
-                render_api_error(e.message, :internal_server_error)
-            end
+        begin
+          paid_project = current_organization.paid_projects.create(paid_project_params)
+          
+          if paid_project.save
+              render json: { message: 'Project created successfully' }, status: :ok
+          else
+              render json: { error: 'Failed to create the project' }, status: :unprocessable_entity
+          end
+        rescue => e
+          render_api_error(e.message, :internal_server_error)
+        end
       end
           
       def paid_project_update
@@ -213,6 +209,21 @@ class OrganizationController < ApplicationController
           end
         
         end
+        def task_create
+        
+          begin
+              task = current_organization.tasks.create(task_params)
+              
+              if task.save
+                  render json: { message: 'Task created successfully' }, status: :ok
+              else
+                  render json: { error: 'Failed to create the task' }, status: :unprocessable_entity
+              end
+            rescue => e
+              render_api_error(e.message, :internal_server_error)
+          end
+       
+        end
       
       
       private 
@@ -263,7 +274,7 @@ class OrganizationController < ApplicationController
      
   end
   def task_params
-      params.require(:member).permit([
+      params.require(:task).permit([
           :assigned_task,
           :total_time,
           :completed_task,

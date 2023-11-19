@@ -54,7 +54,7 @@ class MemberController < ApplicationController
         def assign_task
 
           begin
-            task = current_user.members.find_by(id: params[:id]).tasks.create(task_param)
+            task = current_member.members.find_by(id: params[:id]).tasks.create(task_param)
             if task.save
              
               render json: { message: 'Task assigned successfully' }, status: :ok
