@@ -32,6 +32,5 @@
   We have used the postgresql database from the docker container.
 
 * Postman Collection:
-  https://drive.google.com/file/d/1ObGZ8TkgrQPh1NCDDno1ApHCMfe7uvJi/view?usp=sharing
-
+  https://drive.google.com/file/d/1ObGZ8TkgrQPh1NCDDno1ApHCMfe7uvJi/view?usp=drive_link
 
