@@ -61,7 +61,7 @@ Rails.application.routes.draw do
   post '/paid_project_create', to: 'organization#paid_project_create'
   patch '/paid_project/:id', to: 'organization#paid_project_update' 
   delete '/paid_project/:id', to: 'organization#paid_project_destroy' 
-  get '/task_index', to: 'organization#task_index'
+  
   get '/task_show', to: 'organization#task_show'
   post '/task_create', to: 'organization#task_create'
   post '/member_create', to: 'organization#member_create'
@@ -72,11 +72,11 @@ Rails.application.routes.draw do
   patch '/organization/:id', to: 'admin#organization_update' 
   delete '/organization/:id', to: 'admin#organization_destroy'
   #Member Routes
-  get '/assign_task_view', to: 'member#assign_task_view'
+  get '/task_index_mem', to: 'member#task_index'
   post '/task_create_mem', to: 'member#task_create'
   
-  patch '/tasks/:id', to: 'member#task_update' 
-  delete '/tasks/:id', to: 'member#task_destroy'
+  patch '/task_update/:id', to: 'member#task_update' 
+  delete '/task_delete/:id', to: 'member#task_destroy'
 
   
     

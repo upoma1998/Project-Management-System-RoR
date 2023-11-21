@@ -7,6 +7,7 @@ class Organization < ApplicationRecord
   has_many :free_projects, dependent: :destroy
   
   
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self

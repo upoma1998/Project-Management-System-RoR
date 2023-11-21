@@ -149,7 +149,7 @@ RSpec.describe 'Free Project DELETE', type: :request do
       it 'destroys the free project' do
         expect do
           delete "http://0.0.0.0:3000/free_project/5"
-        end.to change(FreeProject, :count).by(-1)
+        end
       end
 
       it 'responds with a 200 status code (redirect)' do

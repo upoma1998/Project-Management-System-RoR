@@ -8,7 +8,7 @@ class AdminController < ApplicationController
         rescue => e
             render_api_error(e.message, :internal_server_error)
         end
-      end
+    end
       def organization_show
         begin
           render json:@organization
@@ -20,17 +20,16 @@ class AdminController < ApplicationController
       
       def organization_create
         
-            begin
-                organization = current_admin.organizations.create(orga_params)
-                
-                if organization.save
-                    render json: { message: 'Organization created successfully' }, status: :ok
-                else
-                    render json: { error: 'Failed to create the organization' }, status: :unprocessable_entity
-                end
-              rescue => e
-                render_api_error(e.message, :internal_server_error)
-            end
+        begin
+          organization = current_admin.organization.create(orga_params)
+          
+          if organization.save
+              render json: { message: 'Organization created successfully' }, status: :ok
+          else
+              render json: { error: 'Failed to create the organization' }, status: :unprocessable_entity
+          end
+          
+        end
          
       end
       
@@ -80,8 +79,8 @@ class AdminController < ApplicationController
               :email,
               :password,
               :confirm_password,
-              :name,
-              :plan
+              :name
+              
             
           ])
       end

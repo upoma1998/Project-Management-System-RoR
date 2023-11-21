@@ -3,7 +3,14 @@ class MemberController < ApplicationController
     before_action :add_task, only: [:task_show, :task_destroy, :task_update]
     
       
-      
+    def task_index
+      begin
+        @task=Task.all
+        render json:@task
+      rescue => e
+          render_api_error(e.message, :internal_server_error)
+      end
+    end
       
       def task_create
         
@@ -51,34 +58,7 @@ class MemberController < ApplicationController
           
           
         end
-        def assign_task
-
-          begin
-            task = current_member.members.find_by(id: params[:id]).tasks.create(task_param)
-            if task.save
-             
-              render json: { message: 'Task assigned successfully' }, status: :ok
-              
-            else
-              render json: { message: 'Failed to assign Task successfully' }, status: :unprocessable_entity
-            end     
-          rescue => e
-            render_api_error(e.message, :internal_server_error)
-          end
-      
-        end
-      
-        def assign_task_view
-      
-          begin
-            member = current_user.members
-            task = Task.where(member_id: member.pluck(:id))
-            render json: TaskSerializer.new(task), status: :ok
-          rescue => e
-            render_api_error(e.message, :internal_server_error)
-          end
-      
-        end
+       
 
         
 
