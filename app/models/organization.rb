@@ -6,8 +6,14 @@ class Organization < ApplicationRecord
   has_many :paid_projects, dependent: :destroy
   has_many :free_projects, dependent: :destroy
   
-  
-  
+  validates :email, presence: true, uniqueness: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "must be a valid email address" }
+  validates :password, presence: true
+  validates :confirm_password, presence: true
+  validates :name, presence: true
+  validates :password, length: { minimum: 8 }
+  validates_confirmation_of :password
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self

@@ -3,7 +3,7 @@ FactoryBot.define do
     project_name { Faker::Name.name_with_middle }
     start_date { "2023-10-19 17:09:20" }
     completion_date { "2023-10-19 17:09:20" }
-    #organization { nil }
+    organization_id {"1"}
   end
 end
 
