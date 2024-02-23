@@ -55,5 +55,5 @@ gem 'cancancan'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 gem 'resque'
-
+gem 'sidekiq-batch'
 

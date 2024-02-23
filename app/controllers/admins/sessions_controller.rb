@@ -17,9 +17,7 @@ class Admins::SessionsController < Devise::SessionsController
        #}, status: :ok
   end
   def respond_to_on_destroy
-   #jwt_payload=JWT.decode(request.headers['Authorization'].split(' ')[1], Rails.application.credentials.fetch(:secret_key_base)).first
-     #puts(jwt_payload)
-     #current_organization=OrganizationSerializer.find(jwt_payload['sub'])
+
        if current_admin
          render json:{
            status:200,

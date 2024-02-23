@@ -5,7 +5,7 @@ class Organization < ApplicationRecord
   
   has_many :paid_projects, dependent: :destroy
   has_many :free_projects, dependent: :destroy
-  
+  belongs_to :admin
   validates :email, presence: true, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "must be a valid email address" }
   validates :password, presence: true

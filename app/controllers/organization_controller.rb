@@ -3,6 +3,7 @@ class OrganizationController < ApplicationController
     before_action :add_free_project, only: [:free_project_show, :free_project_destroy, :free_project_update]
     before_action :add_paid_project, only: [:paid_project_show, :paid_project_destroy, :paid_project_update]
     before_action :add_task, only: [:task_index, :task_show]
+    before_action :add_member, only: [:member_index, :member_show, :member_update, :member_delete]
       def free_project_index
         begin
           @free_project=FreeProject.all

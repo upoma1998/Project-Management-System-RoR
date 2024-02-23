@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     
   },
 
+
    controllers:{
     sessions: 'admins/sessions',
     registrations: 'admins/registrations'
@@ -71,6 +72,10 @@ Rails.application.routes.draw do
   post '/organization_create', to: 'admin#organization_create'
   patch '/organization/:id', to: 'admin#organization_update' 
   delete '/organization/:id', to: 'admin#organization_destroy'
+  get '/free_project_all_admin', to: 'free_project#free_project_show'
+  get'/paid_project_all_admin', to: 'paid_project#paid_project_show'
+  get '/member_all_admin', to:'member#member_show'
+  get '/task_all_admin', to:'tas#task_show'
   #Member Routes
   get '/task_index_mem', to: 'member#task_index'
   post '/task_create_mem', to: 'member#task_create'
