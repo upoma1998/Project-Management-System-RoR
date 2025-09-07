@@ -37,7 +37,7 @@ services:
     #- POSTGRES_HOST_AUTH_METHOD=trust
       #POSTGRES_DB: postgres
       #POSTGRES_USER: postgres
-      #POSTGRES_PASSWORD: iamupoma1234
+     
     #   - RAILS_ENV=test
     stdin_open: true
     tty: true

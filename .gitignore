@@ -31,3 +31,27 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+# Rails
+/log/*
+/tmp/*
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/public/system
+/public/uploads
+/storage/*
+/node_modules
+/yarn-error.log
+
+# Ignore master key and env files
+/config/master.key
+/.env
+/.env.*
+/config/credentials.yml.key
+
+# Editor/OS
+*.swp
+*~
+.project
+.idea/
+.vscode/
+.DS_Store
