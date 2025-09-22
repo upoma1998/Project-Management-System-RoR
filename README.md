@@ -1,34 +1,56 @@
+# 🚀 Project Management System (PMS)
 
-* User Management System (UMS)
+A role-based **Project & User Management System** built with **Ruby on Rails**, featuring Organizations, Members, and Admins with authentication, authorization, project/task management, and plan-based project creation.  
 
-* The Project Entity, Attribute and Relationship Diagram
-![ruby on rails drawio (1)](https://github.com/upoma1998/Project-Management-System/assets/116708750/dd357e6e-8c25-45ba-aa8e-d1998e3cfb39)
+---
 
-* Project Description:
-The project has 3 types of users- Organizations, Members and Admins.
-1. In the organization module, admin of an organization can register into the system. After registering,they can create projects under a plan.
-2. There are two types of plans- Free Project Plan and Paid Project Plan. An organization can create only one project under the free plan and can create multiple projects    
-under the paid plan.
-3. Organization can also add members under the plan. When a member is added, he can regsiter into the system and view the project that he has been assigned to.
-4. Member can also create tasks and assign tasks to members.
+## 📌 Entity-Relationship Diagram  
+![ERD](https://drive.google.com/file/d/15SuyxzPs-oB5bB2w1pVy5wmTHc96tXlF/view?usp=sharing)
 
-* Requirements Implemented:
-1. Authentication of Organization, Member and Admin using Devise JWT.
-2. Authorization of Organization and adding controller functions to perform CRUD operations on free projects, paid projects and member modules.
-3. Authorization of Admin and adding controller functions to perform operations on organization, free projects, paid projects and member modules.
-4. Authorization of Member and adding member controller functions to perform operations on creation, assignment, update and deletion of tasks.
-5. Performing the swith of plans between free project and paid project plans.
-   
-* Ruby version 3.2.0
+---
 
-* Installation:
-As the project has been dockerized, The following commands will be required to run the project:
-1. docker build .
-2. docker compose up
+## 📖 Project Description  
 
-* Database creation:
-We have used the postgresql database from the docker container.
+This system supports **three types of users**:  
 
-* Postman Collection:
-https://drive.google.com/file/d/1ObGZ8TkgrQPh1NCDDno1ApHCMfe7uvJi/view?usp=drive_link
+- **👨‍💼 Organizations** – Manage projects and members.  
+- **👤 Members** – Assigned to projects, manage and assign tasks.  
+- **🛡️ Admins** – Oversee organizations, projects, and members.  
 
+### 🔑 Key Features  
+
+1. **Organization Module**  
+   - Organizations can register and create projects under a plan.  
+   - Two plans available:  
+     - 🆓 **Free Plan** → Only **1 project** allowed.  
+     - 💎 **Paid Plan** → Multiple projects supported.  
+   - Add members to projects, who can then register and collaborate.  
+
+2. **Member Module**  
+   - View assigned projects.  
+   - Create tasks, assign tasks to other members, and manage updates.  
+
+3. **Admin Module**  
+   - Manage organizations, projects (free & paid), and members.  
+
+---
+
+## ✅ Requirements Implemented  
+
+- 🔐 **Authentication** for Organizations, Members, and Admins using **Devise JWT**.  
+- 🔒 **Authorization** for role-based access:  
+  - **Organization** → CRUD on projects & member management.  
+  - **Admin** → CRUD on organizations, projects, and members.  
+  - **Member** → Create, assign, update, and delete tasks.  
+- 🔄 **Plan Switching** → Seamlessly switch between free and paid project plans.  
+
+---
+
+## 🛠️ Tech Stack  
+
+- **Language**: Ruby `3.2.0`  
+- **Framework**: Ruby on Rails
+- **Front End**: ReactJS 
+- **Database**: PostgreSQL (via Docker container)  
+- **Authentication**: Devise JWT  
+- **Containerization**: Docker & Docker Compose
