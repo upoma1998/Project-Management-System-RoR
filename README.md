@@ -4,8 +4,8 @@ A role-based **Project & User Management System** built with **Ruby on Rails**, 
 
 ---
 
-## 📌 Entity-Relationship Diagram  
-![ERD](https://drive.google.com/file/d/15SuyxzPs-oB5bB2w1pVy5wmTHc96tXlF/view?usp=sharing)
+## 📌 Entity-Relationship Diagram 
+## [ERD] [📄](https://drive.google.com/file/d/1ESTqEvZx9bBULUBQOeCtbuVlQ-fN7IsY/view?usp=sharing)
 
 ---
 
