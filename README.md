@@ -17,10 +17,7 @@ under the paid plan.
 2. Authorization of Organization and adding controller functions to perform CRUD operations on free projects, paid projects and member modules.
 3. Authorization of Admin and adding controller functions to perform operations on organization, free projects, paid projects and member modules.
 4. Authorization of Member and adding member controller functions to perform operations on creation, assignment, update and deletion of tasks.
-      
-   
-* Requirements left:
-1. Performing the swith of plans between free project and paid project plans.
+5. Performing the swith of plans between free project and paid project plans.
    
 * Ruby version 3.2.0
 
